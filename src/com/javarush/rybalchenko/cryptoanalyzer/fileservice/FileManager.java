@@ -14,9 +14,9 @@ public class FileManager {
                 text.append(line).append("\n");
             }
         } catch (FileNotFoundException e) {
-            System.out.println("File not found" + filepath);
+            throw new RuntimeException("File not found: " + filepath, e);
         } catch (IOException e) {
-            System.out.println("Error reading file:" + e.getMessage());
+            throw new FileProcessingException("Error reading file:" + e.getMessage());
         }
         return text.toString();
 
@@ -26,7 +26,7 @@ public class FileManager {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             writer.write(content);
         } catch (IOException e) {
-            System.out.println("Error writing file!" + e.getMessage());
+            throw new FileProcessingException("Error writing file!" + e.getMessage());
         }
     }
 }

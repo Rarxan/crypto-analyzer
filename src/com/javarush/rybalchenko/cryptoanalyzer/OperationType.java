@@ -2,5 +2,6 @@ package com.javarush.rybalchenko.cryptoanalyzer;
 
 public enum OperationType {
     ENCRYPT,
-    DECRYPT;
+    DECRYPT,
+    BRUTE_FORCE;
 }

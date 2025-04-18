@@ -8,12 +8,16 @@ public class ConsoleReader {
 
     public OperationType readOperation() {
         while (true) {
-            System.out.println("Choose operation: encrypt / decrypt");
+            System.out.println("Choose operation: encrypt / decrypt / bruteForce");
             String input = scanner.nextLine().toLowerCase();
-            try {
-                return OperationType.valueOf(input.toUpperCase());
-            } catch (IllegalArgumentException e) {
-                System.out.println("Invalid operation. Please choose 'encrypt' or 'decrypt'.");
+            if ("encrypt".equals(input)) {
+                return OperationType.ENCRYPT;
+            } else if ("decrypt".equals(input)) {
+                return OperationType.DECRYPT;
+            } else if ("bruteforce".equals(input)) {
+                return OperationType.BRUTE_FORCE;
+            } else {
+                System.out.println("Invalid operation. Please choose 'encrypt', 'decrypt', or 'bruteforce'.");
             }
         }
     }
@@ -37,17 +41,18 @@ public class ConsoleReader {
     }
 
     public int readKey() {
-        System.out.println("Enter key: ");
-        try {
-            int key = Integer.parseInt(scanner.nextLine());
-            if (key <= 0) {
-                System.out.println("Key must be a positive integer.");
-                return readKey();
+        while (true) {
+            System.out.println("Enter key: ");
+            try {
+                int key = Integer.parseInt(scanner.nextLine());
+                if (key <= 0) {
+                    System.out.println("Key must be a positive integer.");
+                } else {
+                    return key;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid number format. Please enter a valid integer.");
             }
-            return key;
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid number format. Please enter a valid integer.");
-            return readKey();
         }
     }
 }
