@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="com.javarush.rybalchenko.cryptoanalyzer:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/com_javarush_rybalchenko_cryptoanalyzer_jar</output-path>
+    <root id="archive" name="com.javarush.rybalchenko.cryptoanalyzer.jar">
+      <element id="module-output" name="com.javarush.rybalchenko.cryptoanalyzer" />
+    </root>
+  </artifact>
+</component>
